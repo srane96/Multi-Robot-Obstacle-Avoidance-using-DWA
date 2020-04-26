@@ -1,0 +1,56 @@
+<launch>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_0"/>	
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_2"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_3"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_4"/>
+        <node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_5"/>	
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_6"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_7"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_8"/>
+        <node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_9"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_10"/>
+
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_11"/>	
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_12"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_13"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_14"/>
+        <node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_15"/>	
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_16"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_17"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_18"/>
+        <node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_19"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_20"/>
+
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_21"/>	
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_22"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_23"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_24"/>
+        <node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_25"/>
+
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_32"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_33"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_34"/>
+        <node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_35"/>	
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_36"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_37"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_38"/>
+        <node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_39"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_40"/>
+
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_41"/>	
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_42"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_43"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_44"/>
+        <node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_45"/>	
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_46"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_47"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_48"/>
+        <node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_49"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_50"/>
+
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_26"/>	
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_27"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_28"/>
+	<node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_29"/>
+        <node pkg="robot_manager" type="robot_master" name="robot_master" output="screen" ns="robot_30"/>
+</launch>

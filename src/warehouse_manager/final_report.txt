@@ -1,0 +1,20 @@
+
+
+Time and distance: 
+Robot: 10 Time: 0 Distance: 5.84705e+29
+Robot: 9 Time: 906.808 Distance: 5.84705e+29
+Robot: 8 Time: 2810.08 Distance: 5.84705e+29
+Robot: 7 Time: 4342.92 Distance: 5.84705e+29
+Robot: 6 Time: 4885.8 Distance: 5.84705e+29
+Robot: 5 Time: 6653.03 Distance: 5.84705e+29
+Robot: 4 Time: 7891.97 Distance: 5.84705e+29
+Robot: 3 Time: 9075.6 Distance: 5.84705e+29
+Robot: 2 Time: 10245.3 Distance: 5.84705e+29
+Robot: 1 Time: 12067.6 Distance: 5.84705e+29
+Robot: 0 Time: 12785.2 Distance: 5.84705e+29
+
+
+Total(1/Tasks)-  Time: 7166.42 Distance: 5.84705e+29
+Total Time(For all tasks)- 1943.49
+
+Total number of collisions: 2

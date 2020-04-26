@@ -1,0 +1,149 @@
+<launch>
+	<arg name="map_file" default="$(find dwa)/stage/AddverbMap.yaml"/>
+    <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+
+    <node name="stage" pkg="stage_ros" type="stageros" args="$(find dwa)/stage/AddverbMap.world" />
+	<node pkg="astar" type="astar" name="astar" ns="robot_0" />
+	<node name="rob0" pkg="dwa" type="rob.py" ns="robot_0" output="screen"/>
+
+	<node pkg="astar" type="astar" name="astar" ns="robot_1" />
+	<node name="rob1" pkg="dwa" type="rob.py" ns="robot_1" output="screen"/>	
+	
+	<node pkg="astar" type="astar" name="astar" ns="robot_2" />
+	<node name="rob2" pkg="dwa" type="rob.py" ns="robot_2" output="screen"/>
+
+	<node pkg="astar" type="astar" name="astar" ns="robot_3" />
+	<node name="rob3" pkg="dwa" type="rob.py" ns="robot_3" output="screen"/>
+
+	<node pkg="astar" type="astar" name="astar" ns="robot_4" />
+	<node name="rob4" pkg="dwa" type="rob.py" ns="robot_4" output="screen"/>
+
+	<node pkg="astar" type="astar" name="astar" ns="robot_5" />
+	<node name="rob5" pkg="dwa" type="rob.py" ns="robot_5" output="screen"/>
+
+	<node pkg="astar" type="astar" name="astar" ns="robot_6" />
+	<node name="rob6" pkg="dwa" type="rob.py" ns="robot_6" output="screen"/>
+
+	<node pkg="astar" type="astar" name="astar" ns="robot_7" />
+	<node name="rob7" pkg="dwa" type="rob.py" ns="robot_7" output="screen"/>
+
+	<node pkg="astar" type="astar" name="astar" ns="robot_8" />
+	<node name="rob8" pkg="dwa" type="rob.py" ns="robot_8" output="screen"/>
+
+	<node pkg="astar" type="astar" name="astar" ns="robot_9" />
+	<node name="rob9" pkg="dwa" type="rob.py" ns="robot_9" output="screen"/>
+	
+	<node pkg="warehouse_manager" type="warehouse_master" name="warehouse_master" />
+	<!--
+
+	<node name="rob1" pkg="dwa" type="rob.py" ns="robot_1" output="screen"/>
+	<node name="rob2" pkg="dwa" type="rob.py" ns="robot_2" output="screen"/>
+	<node name="rob3" pkg="dwa" type="rob.py" ns="robot_3" output="screen"/>
+	<node name="rob4" pkg="dwa" type="rob.py" ns="robot_4" output="screen"/>
+	<node name="rob5" pkg="dwa" type="rob.py" ns="robot_5" output="screen"/>
+	<node name="rob6" pkg="dwa" type="rob.py" ns="robot_6" output="screen"/>
+	<node name="rob7" pkg="dwa" type="rob.py" ns="robot_7" output="screen"/>
+	<node name="rob8" pkg="dwa" type="rob.py" ns="robot_8" output="screen"/>
+	<node name="rob9" pkg="dwa" type="rob.py" ns="robot_9" output="screen"/>
+        
+	<node name="rob10" pkg="dwa" type="rob.py" ns="robot_10" output="screen"/>
+	<node name="rob11" pkg="dwa" type="rob.py" ns="robot_11" output="screen"/>  
+	<node name="rob12" pkg="dwa" type="rob.py" ns="robot_12" output="screen"/>
+	<node name="rob13" pkg="dwa" type="rob.py" ns="robot_13" output="screen"/>
+	<node name="rob14" pkg="dwa" type="rob.py" ns="robot_14" output="screen"/>
+	<node name="rob15" pkg="dwa" type="rob.py" ns="robot_15" output="screen"/>
+	
+	<node name="rob16" pkg="dwa" type="rob.py" ns="robot_16" output="screen"/>
+	<node name="rob17" pkg="dwa" type="rob.py" ns="robot_17" output="screen"/>
+	<node name="rob18" pkg="dwa" type="rob.py" ns="robot_18" output="screen"/>
+	<node name="rob19" pkg="dwa" type="rob.py" ns="robot_19" output="screen"/>
+	<node name="rob20" pkg="dwa" type="rob.py" ns="robot_20" output="screen"/>
+
+	<node name="rob21" pkg="dwa" type="rob.py" ns="robot_21" output="screen"/>  
+	<node name="rob22" pkg="dwa" type="rob.py" ns="robot_22" output="screen"/>
+	<node name="rob23" pkg="dwa" type="rob.py" ns="robot_23" output="screen"/>
+	<node name="rob24" pkg="dwa" type="rob.py" ns="robot_24" output="screen"/>
+	<node name="rob25" pkg="dwa" type="rob.py" ns="robot_25" output="screen"/>
+	<node name="rob26" pkg="dwa" type="rob.py" ns="robot_26" output="screen"/>
+	<node name="rob27" pkg="dwa" type="rob.py" ns="robot_27" output="screen"/>
+	<node name="rob28" pkg="dwa" type="rob.py" ns="robot_28" output="screen"/>
+	<node name="rob29" pkg="dwa" type="rob.py" ns="robot_29" output="screen"/>
+
+	<node name="rob30" pkg="dwa" type="rob.py" ns="robot_30" output="screen"/>
+	<node name="rob31" pkg="dwa" type="rob.py" ns="robot_31" output="screen"/>  
+	<node name="rob32" pkg="dwa" type="rob.py" ns="robot_32" output="screen"/>
+	<node name="rob33" pkg="dwa" type="rob.py" ns="robot_33" output="screen"/>
+	<node name="rob34" pkg="dwa" type="rob.py" ns="robot_34" output="screen"/>
+	<node name="rob35" pkg="dwa" type="rob.py" ns="robot_35" output="screen"/>
+	<node name="rob36" pkg="dwa" type="rob.py" ns="robot_36" output="screen"/>
+	<node name="rob37" pkg="dwa" type="rob.py" ns="robot_37" output="screen"/>
+	<node name="rob38" pkg="dwa" type="rob.py" ns="robot_38" output="screen"/>
+	<node name="rob39" pkg="dwa" type="rob.py" ns="robot_39" output="screen"/>
+	<node name="rob40" pkg="dwa" type="rob.py" ns="robot_40" output="screen"/>
+	
+	<node name="rob41" pkg="dwa" type="rob.py" ns="robot_41" output="screen"/>  
+	<node name="rob42" pkg="dwa" type="rob.py" ns="robot_42" output="screen"/>
+	<node name="rob43" pkg="dwa" type="rob.py" ns="robot_43" output="screen"/>
+	<node name="rob44" pkg="dwa" type="rob.py" ns="robot_44" output="screen"/>
+	<node name="rob45" pkg="dwa" type="rob.py" ns="robot_45" output="screen"/>
+	<node name="rob46" pkg="dwa" type="rob.py" ns="robot_46" output="screen"/>
+	<node name="rob47" pkg="dwa" type="rob.py" ns="robot_47" output="screen"/>
+	<node name="rob48" pkg="dwa" type="rob.py" ns="robot_48" output="screen"/>
+	<node name="rob49" pkg="dwa" type="rob.py" ns="robot_49" output="screen"/>
+
+	<node name="rob50" pkg="dwa" type="rob.py" ns="robot_50" output="screen"/>
+	<node name="rob51" pkg="dwa" type="rob.py" ns="robot_51" output="screen"/>  
+	<node name="rob52" pkg="dwa" type="rob.py" ns="robot_52" output="screen"/>
+	<node name="rob53" pkg="dwa" type="rob.py" ns="robot_53" output="screen"/>
+	<node name="rob54" pkg="dwa" type="rob.py" ns="robot_54" output="screen"/>
+	<node name="rob55" pkg="dwa" type="rob.py" ns="robot_55" output="screen"/>
+	<node name="rob56" pkg="dwa" type="rob.py" ns="robot_56" output="screen"/>
+	<node name="rob57" pkg="dwa" type="rob.py" ns="robot_57" output="screen"/>
+	<node name="rob58" pkg="dwa" type="rob.py" ns="robot_58" output="screen"/>
+	<node name="rob59" pkg="dwa" type="rob.py" ns="robot_59" output="screen"/>
+	<node name="rob60" pkg="dwa" type="rob.py" ns="robot_60" output="screen"/>
+
+	<node name="rob61" pkg="dwa" type="rob.py" ns="robot_61" output="screen"/>  
+	<node name="rob62" pkg="dwa" type="rob.py" ns="robot_62" output="screen"/>
+	<node name="rob63" pkg="dwa" type="rob.py" ns="robot_63" output="screen"/>
+	<node name="rob64" pkg="dwa" type="rob.py" ns="robot_64" output="screen"/>
+	<node name="rob65" pkg="dwa" type="rob.py" ns="robot_65" output="screen"/>
+	<node name="rob66" pkg="dwa" type="rob.py" ns="robot_66" output="screen"/>
+	<node name="rob67" pkg="dwa" type="rob.py" ns="robot_67" output="screen"/>
+	<node name="rob68" pkg="dwa" type="rob.py" ns="robot_68" output="screen"/>
+	<node name="rob69" pkg="dwa" type="rob.py" ns="robot_69" output="screen"/>
+
+	<node name="rob70" pkg="dwa" type="rob.py" ns="robot_70" output="screen"/>
+	<node name="rob71" pkg="dwa" type="rob.py" ns="robot_71" output="screen"/>  
+	<node name="rob72" pkg="dwa" type="rob.py" ns="robot_72" output="screen"/>
+	<node name="rob73" pkg="dwa" type="rob.py" ns="robot_73" output="screen"/>
+	<node name="rob74" pkg="dwa" type="rob.py" ns="robot_74" output="screen"/>
+	<node name="rob75" pkg="dwa" type="rob.py" ns="robot_75" output="screen"/>
+	<node name="rob76" pkg="dwa" type="rob.py" ns="robot_76" output="screen"/>
+	<node name="rob77" pkg="dwa" type="rob.py" ns="robot_77" output="screen"/>
+	<node name="rob78" pkg="dwa" type="rob.py" ns="robot_78" output="screen"/>
+	<node name="rob79" pkg="dwa" type="rob.py" ns="robot_79" output="screen"/>
+	<node name="rob80" pkg="dwa" type="rob.py" ns="robot_80" output="screen"/>
+
+	<node name="rob81" pkg="dwa" type="rob.py" ns="robot_81" output="screen"/>  
+	<node name="rob82" pkg="dwa" type="rob.py" ns="robot_82" output="screen"/>
+	<node name="rob83" pkg="dwa" type="rob.py" ns="robot_83" output="screen"/>
+	<node name="rob84" pkg="dwa" type="rob.py" ns="robot_84" output="screen"/>
+	<node name="rob85" pkg="dwa" type="rob.py" ns="robot_85" output="screen"/>
+	<node name="rob86" pkg="dwa" type="rob.py" ns="robot_86" output="screen"/>
+	<node name="rob87" pkg="dwa" type="rob.py" ns="robot_87" output="screen"/>
+	<node name="rob88" pkg="dwa" type="rob.py" ns="robot_88" output="screen"/>
+	<node name="rob89" pkg="dwa" type="rob.py" ns="robot_89" output="screen"/>
+
+	<node name="rob90" pkg="dwa" type="rob.py" ns="robot_90" output="screen"/>
+	<node name="rob91" pkg="dwa" type="rob.py" ns="robot_91" output="screen"/>  
+	<node name="rob92" pkg="dwa" type="rob.py" ns="robot_92" output="screen"/>
+	<node name="rob93" pkg="dwa" type="rob.py" ns="robot_93" output="screen"/>
+	<node name="rob94" pkg="dwa" type="rob.py" ns="robot_94" output="screen"/>
+	<node name="rob95" pkg="dwa" type="rob.py" ns="robot_95" output="screen"/>
+	<node name="rob96" pkg="dwa" type="rob.py" ns="robot_96" output="screen"/>
+	<node name="rob97" pkg="dwa" type="rob.py" ns="robot_97" output="screen"/>
+	<node name="rob98" pkg="dwa" type="rob.py" ns="robot_98" output="screen"/>
+	<node name="rob99" pkg="dwa" type="rob.py" ns="robot_99" output="screen"/>
+	-->
+</launch>

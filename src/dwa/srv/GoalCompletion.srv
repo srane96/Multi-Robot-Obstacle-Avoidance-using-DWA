@@ -1,0 +1,7 @@
+string bot_name
+string goal_name
+float64 total_time
+float64 total_dist
+bool goal_success 
+---
+bool success

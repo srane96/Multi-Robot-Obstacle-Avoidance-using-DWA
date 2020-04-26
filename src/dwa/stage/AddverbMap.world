@@ -1,0 +1,819 @@
+include "turtlebot.inc"
+
+define floorplan model
+(
+  # sombre, sensible, artistic
+  color "gray30"
+
+  # most maps will need a bounding box
+  boundary 1
+
+  gui_nose 0
+  gui_grid 0
+  gui_outline 0
+  gripper_return 0
+  fiducial_return 0
+  laser_return 1
+)
+
+resolution 0.02 #Previous value .02
+interval_sim 100  # simulation timestep in milliseconds
+
+window
+(
+  #size [ 2000.0 1200.0 ] #[ 600.0 700.0 ]
+  size [1000.0 600.0]
+  center [ 0.0 0.0 ]
+  rotate [ 0.0 0.0 ]
+  scale 60
+)
+
+floorplan
+(
+  name "Addverb"
+  bitmap "AddverbMap.png"
+  #bitmap "blank_map.png"
+  size [ 100.0 60.0 5.0 ]  #[ 10.0 10.0 2.0 ]
+  #size[50.0 30.0 2.0]
+  #pose [  5.0  5.0 0.0 0.0 ]
+  pose [  50.0  30.0 0.0 0.0 ]
+)
+
+
+# throw in a robot
+turtlebot
+(
+  pose [5.0 58.0 0.0 0.0]
+  name "turtlebot"
+  color "red"
+)
+
+turtlebot
+(
+  pose [5.0 56.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [5.0 54.0 0.0 0.0]
+  name "turtlebot"
+  color "green"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [5.0 52.0 0.0 0.0]
+  name "turtlebot"
+  color "blue"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [5.0 50.0 0.0 0.0]
+  name "turtlebot"
+  color "yellow"
+)
+
+turtlebot
+(
+  pose [5.0 48.0 0.0 0.0]
+  name "turtlebot"
+  color "cyan"
+)
+
+turtlebot
+(
+  pose [5.0 46.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+turtlebot
+(
+  pose [5.0 44.0 0.0 0.0]
+  name "turtlebot"
+  color "pink"
+)
+
+turtlebot
+(
+  pose [5.0 42.0 0.0 0.0]
+  name "turtlebot"
+  color "grey"
+)
+
+turtlebot
+(
+  pose [5.0 40.0 0.0 0.0]
+  name "turtlebot"
+  color "orange"
+)
+
+turtlebot
+(
+  pose [5.0 38.0 0.0 0.0]
+  name "turtlebot"
+  color "brown"
+)
+
+turtlebot
+(
+  pose [5.0 36.0 0.0 0.0]
+  name "turtlebot"
+  color "red"
+)
+
+# throw in a robot
+turtlebot
+(
+  # pose [ -2.5.0 -11.0 0.0 0.0 ]
+  pose [5.0 34.0 0.0 0.0]
+  name "turtlebot"
+  color "green"
+)
+
+# throw in a robot
+turtlebot
+(
+  # pose [ -2.5.0 -11.0 0.0 0.0 ]
+  pose [5.0 32.0 0.0 0.0]
+  name "turtlebot"
+  color "blue"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [5.0 30.0 0.0 0.0]
+  name "turtlebot"
+  color "yellow"
+)
+
+turtlebot
+(
+  pose [5.0 28.0 0.0 0.0]
+  name "turtlebot"
+  color "cyan"
+)
+
+turtlebot
+(
+  pose [5.0 26.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+turtlebot
+(
+  pose [5.0 24.0 0.0 0.0]
+  name "turtlebot"
+  color "pink"
+)
+
+turtlebot
+(
+  pose [5.0 22.0 0.0 0.0]
+  name "turtlebot"
+  color "grey"
+)
+
+turtlebot
+(
+  pose [5.0 20.0 0.0 0.0]
+  name "turtlebot"
+  color "orange"
+)
+
+turtlebot
+(
+  pose [5.0 18.0 0.0 0.0]
+  name "turtlebot"
+  color "brown"
+)
+
+############21###################
+
+turtlebot
+(
+  pose [5.0 16.0 0.0 0.0]
+  name "turtlebot"
+  color "red"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [5.0 14.0 0.0 0.0]
+  name "turtlebot"
+  color "green"
+)
+
+# throw in a robot
+turtlebot
+(
+  # pose [ -2.5.0 -11.0 0.0 0.0 ]
+  pose [5.0 12.0 0.0 0.0]
+  name "turtlebot"
+  color "blue"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [5.0 10.0 0.0 0.0]
+  name "turtlebot"
+  color "yellow"
+)
+
+turtlebot
+(
+  pose [5.0 8.0 0.0 0.0]
+  name "turtlebot"
+  color "cyan"
+)
+
+turtlebot
+(
+  pose [5.0 6.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+turtlebot
+(
+  pose [5.0 4.0 0.0 0.0]
+  name "turtlebot"
+  color "pink"
+)
+
+turtlebot
+(
+  pose [5.0 2.0 0.0 0.0]
+  name "turtlebot"
+  color "grey"
+)
+
+
+
+# throw in a robot
+turtlebot
+(
+  pose [4.0 58.0 0.0 0.0]
+  name "turtlebot"
+  color "red"
+)
+
+turtlebot
+(
+  pose [4.0 56.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [4.0 54.0 0.0 0.0]
+  name "turtlebot"
+  color "green"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [4.0 52.0 0.0 0.0]
+  name "turtlebot"
+  color "blue"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [4.0 50.0 0.0 0.0]
+  name "turtlebot"
+  color "yellow"
+)
+
+turtlebot
+(
+  pose [4.0 48.0 0.0 0.0]
+  name "turtlebot"
+  color "cyan"
+)
+
+turtlebot
+(
+  pose [4.0 46.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+turtlebot
+(
+  pose [4.0 44.0 0.0 0.0]
+  name "turtlebot"
+  color "pink"
+)
+
+turtlebot
+(
+  pose [4.0 42.0 0.0 0.0]
+  name "turtlebot"
+  color "grey"
+)
+
+turtlebot
+(
+  pose [4.0 40.0 0.0 0.0]
+  name "turtlebot"
+  color "orange"
+)
+
+turtlebot
+(
+  pose [4.0 38.0 0.0 0.0]
+  name "turtlebot"
+  color "brown"
+)
+
+turtlebot
+(
+  pose [4.0 36.0 0.0 0.0]
+  name "turtlebot"
+  color "red"
+)
+
+# throw in a robot
+turtlebot
+(
+  # pose [ -2.5.0 -11.0 0.0 0.0 ]
+  pose [4.0 34.0 0.0 0.0]
+  name "turtlebot"
+  color "green"
+)
+
+# throw in a robot
+turtlebot
+(
+  # pose [ -2.5.0 -11.0 0.0 0.0 ]
+  pose [4.0 32.0 0.0 0.0]
+  name "turtlebot"
+  color "blue"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [4.0 30.0 0.0 0.0]
+  name "turtlebot"
+  color "yellow"
+)
+
+turtlebot
+(
+  pose [4.0 28.0 0.0 0.0]
+  name "turtlebot"
+  color "cyan"
+)
+
+turtlebot
+(
+  pose [4.0 26.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+turtlebot
+(
+  pose [4.0 24.0 0.0 0.0]
+  name "turtlebot"
+  color "pink"
+)
+
+turtlebot
+(
+  pose [4.0 22.0 0.0 0.0]
+  name "turtlebot"
+  color "grey"
+)
+
+turtlebot
+(
+  pose [4.0 20.0 0.0 0.0]
+  name "turtlebot"
+  color "orange"
+)
+
+turtlebot
+(
+  pose [4.0 18.0 0.0 0.0]
+  name "turtlebot"
+  color "brown"
+)
+
+############50#################
+
+turtlebot
+(
+  pose [4.0 16.0 0.0 0.0]
+  name "turtlebot"
+  color "red"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [4.0 14.0 0.0 0.0]
+  name "turtlebot"
+  color "green"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [4.0 12.0 0.0 0.0]
+  name "turtlebot"
+  color "blue"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [4.0 10.0 0.0 0.0]
+  name "turtlebot"
+  color "yellow"
+)
+
+turtlebot
+(
+  pose [4.0 8.0 0.0 0.0]
+  name "turtlebot"
+  color "cyan"
+)
+
+turtlebot
+(
+  pose [4.0 6.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+turtlebot
+(
+  pose [4.0 4.0 0.0 0.0]
+  name "turtlebot"
+  color "pink"
+)
+
+turtlebot
+(
+  pose [4.0 2.0 0.0 0.0]
+  name "turtlebot"
+  color "grey"
+)
+
+
+
+
+
+
+# throw in a robot
+turtlebot
+(
+  pose [98.0 58.0 0.0 180.0]
+  name "turtlebot"
+  color "red"
+)
+
+turtlebot
+(
+  pose [98.0 56.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [98.0 54.0 0.0 0.0]
+  name "turtlebot"
+  color "green"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [98.0 52.0 0.0 0.0]
+  name "turtlebot"
+  color "blue"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [98.0 50.0 0.0 0.0]
+  name "turtlebot"
+  color "yellow"
+)
+
+turtlebot
+(
+  pose [98.0 48.0 0.0 0.0]
+  name "turtlebot"
+  color "cyan"
+)
+
+turtlebot
+(
+  pose [98.0 46.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+turtlebot
+(
+  pose [98.0 44.0 0.0 0.0]
+  name "turtlebot"
+  color "pink"
+)
+
+turtlebot
+(
+  pose [98.0 42.0 0.0 0.0]
+  name "turtlebot"
+  color "grey"
+)
+
+turtlebot
+(
+  pose [98.0 40.0 0.0 0.0]
+  name "turtlebot"
+  color "orange"
+)
+
+turtlebot
+(
+  pose [98.0 38.0 0.0 0.0]
+  name "turtlebot"
+  color "brown"
+)
+
+turtlebot
+(
+  pose [98.0 36.0 0.0 0.0]
+  name "turtlebot"
+  color "red"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [98.0 34.0 0.0 0.0]
+  name "turtlebot"
+  color "green"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [98.0 32.0 0.0 0.0]
+  name "turtlebot"
+  color "blue"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [98.0 30.0 0.0 0.0]
+  name "turtlebot"
+  color "yellow"
+)
+
+turtlebot
+(
+  pose [98.0 28.0 0.0 0.0]
+  name "turtlebot"
+  color "cyan"
+)
+
+turtlebot
+(
+  pose [98.0 26.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+turtlebot
+(
+  pose [98.0 24.0 0.0 0.0]
+  name "turtlebot"
+  color "pink"
+)
+
+turtlebot
+(
+  pose [98.0 22.0 0.0 0.0]
+  name "turtlebot"
+  color "grey"
+)
+
+turtlebot
+(
+  pose [98.0 20.0 0.0 0.0]
+  name "turtlebot"
+  color "orange"
+)
+
+turtlebot
+(
+  pose [98.0 18.0 0.0 0.0]
+  name "turtlebot"
+  color "brown"
+)
+
+############80#################
+
+turtlebot
+(
+  pose [98.0 16.0 0.0 0.0]
+  name "turtlebot"
+  color "red"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [98.0 14.0 0.0 0.0]
+  name "turtlebot"
+  color "green"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [98.0 12.0 0.0 0.0]
+  name "turtlebot"
+  color "blue"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [98.0 10.0 0.0 0.0]
+  name "turtlebot"
+  color "yellow"
+)
+
+turtlebot
+(
+  pose [98.0 8.0 0.0 0.0]
+  name "turtlebot"
+  color "cyan"
+)
+
+turtlebot
+(
+  pose [98.0 6.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+turtlebot
+(
+  pose [98.0 4.0 0.0 0.0]
+  name "turtlebot"
+  color "pink"
+)
+
+turtlebot
+(
+  pose [98.0 2.0 0.0 0.0]
+  name "turtlebot"
+  color "grey"
+)
+
+
+
+
+
+
+
+
+# throw in a robot
+turtlebot
+(
+  pose [97.0 58.0 0.0 0.0]
+  name "turtlebot"
+  color "red"
+)
+
+turtlebot
+(
+  pose [97.0 56.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [97.0 54.0 0.0 0.0]
+  name "turtlebot"
+  color "green"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [97.0 52.0 0.0 0.0]
+  name "turtlebot"
+  color "blue"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [97.0 50.0 0.0 0.0]
+  name "turtlebot"
+  color "yellow"
+)
+
+turtlebot
+(
+  pose [97.0 48.0 0.0 0.0]
+  name "turtlebot"
+  color "cyan"
+)
+
+turtlebot
+(
+  pose [97.0 46.0 0.0 0.0]
+  name "turtlebot"
+  color "purple"
+)
+
+turtlebot
+(
+  pose [97.0 44.0 0.0 0.0]
+  name "turtlebot"
+  color "pink"
+)
+
+turtlebot
+(
+  pose [97.0 42.0 0.0 0.0]
+  name "turtlebot"
+  color "grey"
+)
+
+turtlebot
+(
+  pose [97.0 40.0 0.0 0.0]
+  name "turtlebot"
+  color "orange"
+)
+
+turtlebot
+(
+  pose [97.0 38.0 0.0 0.0]
+  name "turtlebot"
+  color "brown"
+)
+
+turtlebot
+(
+  pose [97.0 36.0 0.0 0.0]
+  name "turtlebot"
+  color "red"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [97.0 34.0 0.0 0.0]
+  name "turtlebot"
+  color "green"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [97.0 32.0 0.0 0.0]
+  name "turtlebot"
+  color "blue"
+)
+
+# throw in a robot
+turtlebot
+(
+  pose [97.0 30.0 0.0 0.0]
+  name "turtlebot"
+  color "yellow"
+)
+
+###############109################
