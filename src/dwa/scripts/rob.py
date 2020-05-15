@@ -1,4 +1,11 @@
 #!/usr/bin/env python
+
+#!/usr/bin/env python
+'''
+Description: This python file implements local DWA method to avoid obstacles. It is edited to work
+with Warehouse Manager and STAGE_ROS simulator in warehouse environment. 
+
+'''
 import rospy
 import math
 import numpy as np
@@ -11,6 +18,11 @@ from dwa.srv import GoalRequest, GoalRequestRequest, GoalCompletion, GoalComplet
 from warehouse_manager.srv import Robot_Task_Request, Robot_Task_Complete
 import cv2
 
+
+'''
+Multiple robots use this same python node under different namespaces to run local planner. 
+Hence, it is necessary to know which namespace it belongs to in order to communicate with it's respective topic.
+'''
 ns = rospy.get_namespace()
 BOT_NAME = ns[7:len(ns)-1]
 ODOM_TOPIC = ns + "base_pose_ground_truth"
@@ -19,63 +31,54 @@ PATH_TOPIC = ns + "nav_path"
 CMD_VEL = ns + "cmd_vel"
 INI_POS = ns + "initialpose"
 GOAL_POS = ns + "move_base_simple/goal"
-'''
-print(BOT_NAME)
-print(ODOM_TOPIC)
-print(LASER_TOPIC)
-print(CMD_VEL)
-'''
+
+
 class Config():
     # simulation parameters
 
     def __init__(self):
-        # robot parameter
-        #NOTE good params:
-        #NOTE 0.55,0.1,1.0,1.6,3.2,0.15,0.05,0.1,1.7,2.4,0.1,3.2,0.18
-        self.max_speed = 0.8 # [m/s]
+        self.max_speed = 0.65 # [m/s]
         self.min_speed = 0.0  # [m/s]
         self.max_yawrate = 1.0  # [rad/s]
         self.max_accel = 1.5  # [m/ss]
         self.max_dyawrate = 3.2  # [rad/ss]
-        self.v_reso = 0.5  # [m/s]
-        self.yawrate_reso = 1.5  # [rad/s]
-        self.dt = 0.5  # [s]
+        self.v_reso = 0.5  # resolution of steps in which velocities are evaluated [m/s]
+        self.yawrate_reso = 1.5  # resolution of steps in which angular velocity is evaluated[rad/s]
+        self.dt = 0.5  # time step [s]
         self.predict_time = 1.5  # [s]
-        self.to_goal_cost_gain = 2.5 #lower = detour
+        self.to_goal_cost_gain = 4.5 #lower = detour
         self.speed_cost_gain = 0.1 #lower = faster
-        self.obs_cost_gain = 8.0 #lower z= fearless
+        self.obs_cost_gain = 5.0 #lower z= fearless
         self.robot_radius = 0.60  # [m]
-        self.x = 0.0
-        self.y = 0.0
-        self.th = 0.0
-        self.start_x = 0.0
-        self.start_y = 0.0
-        self.start_assigned = False
-        self.goalX = self.x  
-        self.goalY = self.y
+        self.x = 0.0 # Current y axis location of robot [m]
+        self.y = 0.0 # Current x axis location of robot [m]
+        self.th = 0.0 # Current orientation of robot [rad]
+        self.start_x = 0.0 # Starting x location of robot when it initiates goal execution
+        self.start_y = 0.0 # Starting y location of robot when it initiates goal execution
+        self.start_assigned = False # flag - if robot has received it's start location from simulator
+        self.goalX = self.x  # current waypoints x location [m] 
+        self.goalY = self.y # current waypoints y location [m]
 
-        ## Final goal if path is not found
-        self.goalFinalX = 0.0
-        self.goalFinalY = 0.0
-        self.r = rospy.Rate(20)
-        self.busy = False
-        self.canSendCompletionRequest = False #can send completion request after bot starts traversing 
-        self.job_start = 0.0;
-        self.job_end = 0.0;
-        self.stall_count = 0;
-        self.path = []
-        self.got_path = False
-        self.distance_x = 0.0
-        self.distance_y = 0.0
-        self.path_received = False
-        #self._sub = rospy.Subscriber('/map', OccupancyGrid, self.getMap, queue_size=1)
-        self.aux_stall_count = 0
-        self.mapimg = None
-        self.mapreceived = False
-        self.obstacle_space = []
-        self.final_assigned = False
+        self.goalFinalX = 0.0 # last waypoint (final goal) of the path on x axis
+        self.goalFinalY = 0.0 # last waypoint (final goal) of the path on y axis
+        self.r = rospy.Rate(20) 
+        self.busy = False # flag - if robot has already received it's job
+        self.canSendCompletionRequest = False # flag - if robot can send completion request after bot starts traversing 
+        self.job_start = 0.0; # start time of current job [ms]
+        self.job_end = 0.0; # end time of current job [ms]
+        self.stall_count = 0; # for how much total time robot got stuck
+        self.path = [] # path received by robot from global planner
+        self.path_received = False # flag - if robot successfully received a path
+        self.aux_stall_count = 0 # for how much time robot got stuck at a single waypoint
+        self.final_assigned = False # flag - if robot received it's final goal
 
-    # Callback for Odometry
+
+
+    ''' 
+    @brief Callback for Odometry
+    @param msg - Odometry information
+    
+    '''
     def assignOdomCoords(self, msg):
         # X- and Y- coords and pose of robot fed back into the robot config
         self.x = msg.pose.pose.position.x
@@ -93,6 +96,10 @@ class Config():
         else:
             self.stall_count = 0
 
+    '''
+    @brief Callback for Astar
+    @param msg - Start and goal locations
+    '''
     def astarPath(self, msg):
         if not self.path_received: 
             print("Path received: ", len(msg.poses), " by ", BOT_NAME)
@@ -127,6 +134,11 @@ class Config():
         self.goalX = msg.point.x
         self.goalY = msg.point.y
 
+    '''
+    @brief Callback to request goal location from Warehouse Manager
+    @param name - robot's unique name (it should be available in warehouse manager's robots log)
+
+    '''
     def goalServiceRequeset(self, name):
         rospy.wait_for_service('/request_available_task')
         print("Service available for ", name)
@@ -137,6 +149,12 @@ class Config():
         except rospy.ServiceException, e:
             print "Service call failed: %s"%e
 
+    '''
+    @brief Callback to report Warehouse Manager that current goal is completed
+    @param name - robot's name
+    @param time - total time taken to reach the goal
+    @param dist - distance between start and goal 
+    '''
     def goalCompleteRequest(self, name, time, dist):
         rospy.wait_for_service('/report_task_complete')
         try:
@@ -146,6 +164,11 @@ class Config():
         except rospy.ServiceException, e:
             print "Service call failed: %s"%e
 
+'''
+@brief: Predefined Obstacle class to store obstacle locations and Calculate Dynamic Window 
+@author: Connor McGuile
+
+'''
 class Obstacles():
     def __init__(self):
         # Set of coordinates of obstacles in view
@@ -380,11 +403,14 @@ def main():
     config = Config()
     # position of obstacles
     obs = Obstacles()
+    # Subscriber to receive odom information from STAGE simulator
     subOdom = rospy.Subscriber(ODOM_TOPIC, Odometry, config.assignOdomCoords)
+    # Subscriber to receive laser scan information from STAGE simulator
     subLaser = rospy.Subscriber(LASER_TOPIC, LaserScan, obs.assignObs, config)
+    # Subscriber to receive a star path 
     subPath = rospy.Subscriber(PATH_TOPIC, Path, config.astarPath)
-    #globPose = rospy.Subscriber("/robot_0/base_pose_ground_truth",)
-    #subGoal = rospy.Subscriber("/clicked_point", PointStamped, config.goalCB)
+    
+    # Published to publish robot velocity commands
     pub = rospy.Publisher(CMD_VEL, Twist, queue_size=1)
     pub_init = rospy.Publisher(INI_POS, PoseWithCovarianceStamped, queue_size=1)
     pub_goal = rospy.Publisher(GOAL_POS, PoseStamped, queue_size=1)
@@ -415,7 +441,7 @@ def main():
             pose_stamped.pose.pose.position.y = config.y 
             pose_stamped.pose.pose.position.z = 0.0
 
-
+            # If robot waits for too long at current waypoint, try next point
             config.aux_stall_count += 1
             if config.aux_stall_count > 800:
                 if len(config.path) > 2:
@@ -431,6 +457,7 @@ def main():
                 if not config.final_assigned:
                     config.aux_stall_count = 0
 
+            # If robot could not reach the final goal, indicate current goal completion as failure
             if config.aux_stall_count > 10000:
                 # situation is hopeless
                 print("it's hopeless")
@@ -459,7 +486,10 @@ def main():
                 #print("GoalWaypoint: ", config.goalX, " ", config.goalY)
 
             else:
-                # if at goal then stay there until new goal published
+                '''
+                This means robot has reached its final waypoint. In this case, notify warehouse manager about total
+                time taken and distance travelled.
+                '''
                 config.job_end = time.time()
                 speed.linear.x = 0.0
                 speed.angular.z = 0.0
@@ -478,12 +508,10 @@ def main():
             #print(BOT_NAME, " Sent service request")
             goalCoord = config.goalServiceRequeset(BOT_NAME)
             if goalCoord.task_available:
-
-                # send goal and current position to the Astar planner
-                #print("publishing to ", INI_POS)
-                #print("publishing goal to", GOAL_POS)
-
-
+                '''
+                If goal is received succesfully from the warehouse manager, store the goal information
+                and request for the path
+                '''
                 config.goalX = int(goalCoord.x * 1) #- config.orig_x
                 config.goalY = int(goalCoord.y * 1)#- config.orig_y
                 config.busy = True
